@@ -1,18 +1,5 @@
 body {
 	font-family: "Roboto Mono", sans-serif;
-}
-
-#menuBar h2 {
-	display: inline-block;
-}
-
-#about {
-	margin-left: 6em;
-	margin-right: 6em;
-	text-align: left;
-}
-
-.button:hover {
-	color: darkgray;
-	cursor: pointer;
+	background-image: "https://i.ibb.co/dpZ9Btn/emo-angel.jpg";
+	color: #FFF;
 }
