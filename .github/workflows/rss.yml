@@ -1,0 +1,27 @@
+name: RSS
+on:
+  schedule:
+    - cron: "0 17 * * *"
+  push:
+
+jobs:
+  generate_rss:
+    runs-on: macOS-latest
+    name: Generate RSS
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: RSS
+        id: rss
+        uses: katydecorah/instagram-rss-action@v0.3.0
+        with:
+          yourInstagram: x_zomb1e
+          listOfInstagrams: scen3qu33n,basedbutemo,callmespice,kroftkat,chocolateandvanity,emoboy_meow,i_d34_,katyelizabella,stabbedbygrace.mp3,hugzforbugz,nicopokie,themadgeoffreyparis,prudence_rain,devilsraven666x,champagneshowerzz,suicideonmyspace,fruityl00p_,delugeoffailedattempts,ocaso0.oo,sugarsworld,lollipopecstasy,xxptvstrxx,x0x.negative0.x0x,chainsawizzie,candydolle,its.jenny,awesometeacat,tr4shy.xe,izabelakillzu,kat.kuriosity,xxkatkatastrophexx,zombiekizzer,pocketbrat,mellyxcore,xx.kellinkorpse.xx,fcknicotinexox,clawed_beauty101,1c00k13m0n5t3r,kittistitchez,angeliccorpse13,gravelygothickayla,catgirlluka,blo0dycupcake,japp_leack,theperfectcirc1e,kalaynokaycos,captainmeowdy,rosiiswitchblade,bl0witlikeagun,ac1d1cc0r3,xx_saint.of.the.blood_xx,azzamiree,cheesegirl692,z0mb1e_irl,schneeefuchs,xxskrilljaxx,corycannibal,myspace.pup,rawrbecca_xd,sceneqweenxd,vampiref0cker,chicag0_espr3ss0,brunamelop,kaylakatastrophic,keikocosplay,snowyraccoon,xxlexislethalxx,oliveugly,scruffydoomergirl,thejuliettemichele
+          pretty: false
+      - name: Commit files
+        if: ${{ success() && steps.rss.outputs.RSS_STATUS == 'success' }}
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git commit -am "Updated instagram.json"
+          git push
