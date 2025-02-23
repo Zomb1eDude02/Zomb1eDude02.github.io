@@ -1,9 +1,15 @@
-body {
+body, html {
+	height: 100%;
+}
+
+h1 {
+	color: #FFF;
+}
+
+.bg {
+	height: 100%;
 	background-image: url("https://i.ibb.co/dpZ9Btn/emo-angel.jpg");
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
-	color: #FFF;
-	height: 100%;
-	width: 100%;
 }
